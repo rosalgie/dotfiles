@@ -12,7 +12,7 @@
   "custom/media": {
     "exec": "/usr/bin/python3 $HOME/.local/bin/mediaplayer.py",
     "return-type": "json",
-    "max-length": 250,
+    "max-length": 70,
     "on-click": "playerctl play-pause",
     "escape": "true",
   },
