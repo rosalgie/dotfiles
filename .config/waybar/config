@@ -7,7 +7,7 @@
   "modules-left": ["tray", "hyprland/workspaces", "pulseaudio"],
   "modules-center": ["custom/media"],
   // "modules-center": ["mpd"],
-  "modules-right": ["network", "custom/headphone-battery", "battery", "backlight", "clock"],
+  "modules-right": ["network", "custom/headphone-battery", "battery", "backlight", "hyprland/language", "clock"],
   // Modules configuration
   "custom/media": {
     "exec": "/usr/bin/python3 $HOME/.local/bin/mediaplayer.py",
