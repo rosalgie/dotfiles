@@ -1,4 +1,5 @@
 <img width="1920" height="1080" alt="dotfiles_showcase" src="https://github.com/user-attachments/assets/5e7757b6-53b6-4e3e-8f42-5aeebb6dc0c5" />
+<img width="1920" height="1080" alt="dotfiles_lockscreen_showcase" src="https://github.com/user-attachments/assets/e11f9203-4099-4ffa-9fc6-a76a8342e853" />
 
 # dotfiles
 
