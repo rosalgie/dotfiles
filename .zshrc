@@ -131,6 +131,14 @@ function mdpdf() {
   pandoc "$input" -o "$output" --pdf-engine=xelatex
 }
 
+function ytmp4() {
+  yt-dlp \
+    -f "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/best" \
+    --merge-output-format mp4 \
+    -o "%(title).200B [%(id)s].%(ext)s" \
+    "$@"
+}
+
 ##############################################################
 #                           Aliases!
 ##############################################################
