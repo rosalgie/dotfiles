@@ -119,6 +119,18 @@ function kill-all-jobs {
   kill "${job_ids[@]}"
 }
 
+function mdpdf() {
+  if [[ $# -lt 1 ]]; then
+    echo "Usage: mdpdf input.md [output.pdf]"
+    return 1
+  fi
+
+  local input="$1"
+  local output="${2:-${input:r}.pdf}"
+
+  pandoc "$input" -o "$output" --pdf-engine=xelatex
+}
+
 ##############################################################
 #                           Aliases!
 ##############################################################
