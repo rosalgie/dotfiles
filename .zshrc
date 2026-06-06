@@ -132,11 +132,39 @@ function mdpdf() {
 }
 
 function ytmp4() {
+  local subtitles=0
+  local args=()
+  local opts=()
+
+  while (($#)); do
+    case "$1" in
+      --subtitles)
+        subtitles=1
+        shift
+        ;;
+      *)
+        args+=("$1")
+        shift
+        ;;
+    esac
+  done
+
+  if (( subtitles )); then
+    opts+=(
+      --write-subs
+      --write-auto-subs
+      --sub-langs "en.*"
+      --sub-format "srt/vtt/best"
+      --convert-subs srt
+    )
+  fi
+
   yt-dlp \
     -f "bv*[ext=mp4]+ba[ext=m4a]/b[ext=mp4]/best" \
     --merge-output-format mp4 \
+    "${opts[@]}" \
     -o "%(title).200B [%(id)s].%(ext)s" \
-    "$@"
+    "${args[@]}"
 }
 
 ##############################################################
