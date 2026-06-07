@@ -6,7 +6,10 @@ return {
       local npairs = require("nvim-autopairs")
       local Rule = require("nvim-autopairs.rule")
 
-      npairs.setup({})
+      npairs.setup({
+        -- Default pattern, but without %$
+        ignored_next_char = [=[[%w%%%'%[%"%.%`]]=],
+      })
 
       npairs.add_rule(Rule("$", "$", { "markdown" }))
     end,
