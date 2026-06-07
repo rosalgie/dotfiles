@@ -56,7 +56,7 @@ return {
         },
 
         symbols = {
-          enable = true,
+          enable = false,
         },
 
         texts = {
