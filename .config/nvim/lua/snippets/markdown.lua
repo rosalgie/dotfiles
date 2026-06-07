@@ -20,6 +20,23 @@ ls.add_snippets("markdown", {
     })
   ),
 
+  s(
+    "chemlatex",
+    t({
+      "---",
+      "geometry:",
+      "  - top=0.55in",
+      "  - bottom=0.65in",
+      "  - left=0.65in",
+      "  - right=0.65in",
+      "fontsize: 10pt",
+      "header-includes:",
+      "  - \\usepackage[version=4]{mhchem}",
+      "  - \\usepackage{cancel}",
+      "---",
+    })
+  ),
+
   -- Common writing helpers
   s(
     "let",
