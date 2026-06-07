@@ -46,7 +46,7 @@ ls.add_snippets("markdown", {
     "ex",
     fmt(
       [[
-## Example: {}
+Example: {}
 
 {}
 
@@ -156,6 +156,28 @@ $$\boxed{{{}}}$$
       i(2, "f(x)"),
     })
   ),
+  s(
+    "ce",
+    fmt("\\ce{{{}}}", {
+      i(1, "H2O"),
+    })
+  ),
+
+  s(
+    "txt",
+    fmt("\\text{{{}}}", {
+      i(1, "text"),
+    })
+  ),
+
+  s(
+    "can",
+    fmt("\\cancel{{{}}}", {
+      i(1, "x"),
+    })
+  ),
+
+  -- misc.
   s("table", {
     t({
       "| Column 1 | Column 2 | Column 3 |",
