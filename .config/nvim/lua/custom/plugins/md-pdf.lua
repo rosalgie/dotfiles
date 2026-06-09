@@ -1,6 +1,6 @@
 return {
-  "arminveres/md-pdf.nvim",
-  branch = "main", -- you can assume that main is somewhat stable until releases will be made
+  dir = vim.fn.expand("~/Programming/md-pdf.nvim"),
+  name = "md-pdf.nvim",
   lazy = true,
   keys = {
     {
@@ -14,6 +14,6 @@ return {
   ---@type md-pdf.config
   opts = {
     toc = false,
-    pdf_engine = "xelatex",
+    pdf_engine = "pdflatex",
   },
 }
