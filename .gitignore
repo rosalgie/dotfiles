@@ -7,3 +7,5 @@ Pictures/y.re
 .config/mpd/mpd.log
 .config/mpd/sticker.sql
 .config/mpd/playlists
+.local/bin/agy
+.local/bin/codex

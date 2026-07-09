@@ -1,27 +1,65 @@
+local parsers = {
+  "bash",
+  "c",
+  "html",
+  "lua",
+  "markdown",
+  "markdown_inline",
+  "latex",
+  "vim",
+  "vimdoc",
+}
+
+local filetypes = {
+  "sh", -- bash parser
+  "c",
+  "html",
+  "lua",
+  "markdown",
+  "tex", -- latex parser
+  "vim",
+  "help", -- vimdoc parser
+}
+
 return {
-  { -- Highlight, edit, and navigate code
+  {
     "nvim-treesitter/nvim-treesitter",
-    branch = "master",
+    branch = "main",
+
+    -- main does not support lazy-loading.
+    lazy = false,
+
+    -- Keep installed parsers compatible with the plugin revision.
     build = ":TSUpdate",
+
     config = function()
-      -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+      local treesitter = require("nvim-treesitter")
 
-      ---@diagnostic disable-next-line: missing-fields
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = { "bash", "c", "html", "lua", "markdown", "markdown_inline", "latex", "vim", "vimdoc" },
-        -- Autoinstall languages that are not installed
-        auto_install = true,
-        highlight = { enable = true },
-        indent = { enable = true },
-      })
+      -- Optional when using the default install directory.
+      treesitter.setup()
 
-      -- There are additional nvim-treesitter modules that you can use to interact
-      -- with nvim-treesitter. You should go explore a few and see what interests you:
+      -- Replacement for `ensure_installed`.
       --
-      --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-      --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-      --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+      -- This is asynchronous. On a fresh installation, reopen the buffer after
+      -- parser installation finishes.
+      treesitter.install(parsers)
+
+      vim.api.nvim_create_autocmd("FileType", {
+        pattern = filetypes,
+        callback = function(args)
+          -- Replacement for:
+          -- highlight = { enable = true }
+          vim.treesitter.start(args.buf)
+
+          -- Replacement for:
+          -- indent = { enable = true }
+          --
+          -- Treesitter indentation remains experimental.
+          vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
+      })
     end,
   },
 }
+
 -- vim: ts=2 sts=2 sw=2 et

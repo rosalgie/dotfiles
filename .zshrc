@@ -225,3 +225,7 @@ source ~/.powerlevel10k/powerlevel10k.zsh-theme
 source ~/.powerlevel10k/powerlevel10k.zsh-theme
 
 export PATH=$PATH:/home/samuel/.spicetify
+
+
+# Added by Antigravity CLI installer
+export PATH="/home/samuel/.local/bin:$PATH"
