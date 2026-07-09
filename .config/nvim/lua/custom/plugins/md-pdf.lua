@@ -14,6 +14,11 @@ return {
   ---@type md-pdf.config
   opts = {
     toc = false,
+    preview_toc = false,
     pdf_engine = "pdflatex",
+    pandoc_user_args = {
+      "--lua-filter=" .. vim.fn.expand("~/Programming/latex-stuff/pandoc-grid-tables.lua"),
+      "--include-in-header=" .. vim.fn.expand("~/Programming/latex-stuff/pandoc-latex-header.tex"),
+    },
   },
 }
